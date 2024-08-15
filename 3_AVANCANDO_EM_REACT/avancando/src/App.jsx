@@ -1,9 +1,15 @@
+import { useState } from 'react';
 import './App.css';
 import quadra from './assets/quadra.jpg'
+import ConditionalRender from './components/ConditionalRender';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
+import ShowUserName from './components/ShowUserName';
 
 function App() {
+  const name = "Carlos"
+  const [userName] = useState("Bianca");
+
   return (
     <div className="App">
       <h3>Seção 3</h3>
@@ -17,6 +23,10 @@ function App() {
       </div>
       <ManageData/>
       <ListRender/>
+      <ConditionalRender/>
+      <ShowUserName name={name}/>
+      <ShowUserName name="João"/>
+      <ShowUserName name={userName}/>
     </div>
   );
 }
