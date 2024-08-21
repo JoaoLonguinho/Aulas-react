@@ -7,6 +7,7 @@ import ManageData from './components/ManageData';
 import ShowUserName from './components/ShowUserName';
 import CarDetails from './components/CarDetails';
 import Fragments from './components/Fragments';
+import Container from './components/Container';
 
 function App() {
   const name = "Carlos"
@@ -45,6 +46,13 @@ function App() {
       ))} 
       {/* Fragments */}
       <Fragments propFragment="teste" />
+      {/* Children prop */}
+      <Container myValue='testing'>
+        <p>Este é meu conteúdo</p>
+      </Container>
+      <Container myValue={'testing-2'}>
+        <h3>teste</h3>
+      </Container>
     </div>
   );
 }
