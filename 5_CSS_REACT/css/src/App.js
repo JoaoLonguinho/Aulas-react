@@ -1,6 +1,7 @@
 
 import './App.css';
 import MyComponent from './components/MyComponent';
+import Title from './components/Title';
 
 function App() {
   const validacao = 10
@@ -15,6 +16,8 @@ function App() {
       <p style={n < validacao ? ({padding: "15px"}) : ({padding: "5px"})  }>Este é um CSS utilizando informações dinâmicas</p>
       {/* classe dinamica */}
       <h2 className={redTitle ? "red-title" : "title"}>Este título terá classe dinâmica</h2>
+      {/* Css Modules */}
+      <Title/>
     </div>
   );
 }
