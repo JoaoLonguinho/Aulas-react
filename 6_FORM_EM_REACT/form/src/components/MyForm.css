@@ -1,0 +1,23 @@
+form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+    gap: 20px;
+}
+form div:first-child{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+form input{
+    width: 100%;
+}
+form label{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+form input{
+    flex: 1 1 50%;
+}
