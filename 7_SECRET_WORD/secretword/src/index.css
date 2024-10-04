@@ -20,8 +20,7 @@ button{
 }
 button:hover{
   cursor: pointer;
-  margin-left: 20px;
-  margin-top: 20px;
+  transform: scale(1.1);
   transition: 0.2s ease-in-out;
-  letter-spacing: 15px;
+  
 }
