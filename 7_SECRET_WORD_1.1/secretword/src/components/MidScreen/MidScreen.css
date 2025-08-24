@@ -14,15 +14,19 @@
 .letter-container form{
     display: flex;
     gap: 5px;
+    justify-content: space-between;
 }
 .wrong-letter-container div{
     font-size: 32px;
     letter-spacing: 5px;
     text-transform: uppercase;
 }
+.check-letter{
+    flex-grow: 1;
+}
 .wordContainer{
     display: flex;
-    gap: 10px
+    gap: 10px;
 }
 .letter,
 .black-square{

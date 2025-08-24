@@ -1,15 +1,17 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import './MidScreen.css'
 
 const MidScreen = ({verifyLetter, hint, selectedWord, letters, guessedLetters, wrongLetters, guesses, score}) => {
   
   const [letter, setLetter] = useState('');
+  const letterInputRef = useRef(null);
   
   const handleSubmit = (e) =>{
     e.preventDefault();
 
     verifyLetter(letter);
     setLetter("");
+    letterInputRef.current.focus();
   }
 
   return (
@@ -35,8 +37,8 @@ const MidScreen = ({verifyLetter, hint, selectedWord, letters, guessedLetters, w
       <div className="letter-container">
         <p>Tente advinhar uma <span className="highlight">letra</span> da <span className="highlight">palavra</span></p>
         <form onSubmit={handleSubmit}>
-          <input type="text" name='letter' maxLength="1" required onChange={(e) => setLetter(e.target.value)} value={letter}/>
-          <button onClick={verifyLetter}>Tentar</button>
+          <input type="text" name='letter' maxLength="1" required onChange={(e) => setLetter(e.target.value)} value={letter} ref={letterInputRef}/>
+          <button onClick={verifyLetter} class="check-letter">Tentar</button>
         </form>
       </div>
       <div className="wrong-letter-container">
