@@ -27,14 +27,14 @@ function App() {
 
   const pickWordAndCategory = () => {
     const categories = Object.keys(words); // chaves do array de objetos
-    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)];
+    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]; // Pegando uma categoria aleatórios pelas chaves do array e pegando o tamanho com base no tamanho do array
 
     console.log(category);
   }
 
   const startGame = () => { // Start the game
     // pick word and category
-
+  pickWordAndCategory();
 
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
   }
