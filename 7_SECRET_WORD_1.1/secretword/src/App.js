@@ -21,14 +21,23 @@ const stages = [
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);  // hook puxando o primeiro estágio do jogo
   const [words] = useState(wordsList); // Busca as palavras no arquivo words
-  const startGame = () => {
+  const startGame = () => { // Start the game
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
   }
+
+  const verifyLetter = () => { // Checks if the word contains the mentioned letters
+    setGameStage(stages[2].name);
+  }
+
+  const restartGame = () => { // Checks if the word contains the mentioned letters
+    setGameStage(stages[0].name);
+  }
+
   return (
     <div className="App">
       {gameStage === 'start' && <StartScreen startGame={startGame} />}
-      {gameStage === 'mid' && <MidScreen/>}
-      {gameStage === 'end' && <EndScreen/>}
+      {gameStage === 'mid' && <MidScreen verifyLetter={verifyLetter} />}
+      {gameStage === 'end' && <EndScreen restartGame={restartGame}/>}
     </div>
   );
 }

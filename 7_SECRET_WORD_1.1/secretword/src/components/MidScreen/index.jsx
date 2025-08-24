@@ -1,9 +1,9 @@
 import React from 'react'
 
-const MidScreen = () => {
+const MidScreen = ({verifyLetter}) => {
   return (
     <div>
-    
+      <button onClick={verifyLetter}>Troca tela</button>
     </div>
   )
 }
