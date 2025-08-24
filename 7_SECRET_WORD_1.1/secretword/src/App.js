@@ -47,8 +47,9 @@ function App() {
 
     setPickedCategory(category);
     setPickedWord(word);
+    setLetters(wordLetters);
 
-    console.log(pickedWord, pickedCategory);
+    console.log(pickedWord, pickedCategory, letters);
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
   }
 
