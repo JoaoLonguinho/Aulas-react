@@ -27,7 +27,9 @@ function App() {
 
   const pickWordAndCategory = () => {
     const categories = Object.keys(words); // chaves do array de objetos
-    const category = categories[Math.random() * Object.keys(categories).length];
+    const category = categories[Math.floor(Math.random() * Object.keys(categories).length)];
+
+    console.log(category);
   }
 
   const startGame = () => { // Start the game
