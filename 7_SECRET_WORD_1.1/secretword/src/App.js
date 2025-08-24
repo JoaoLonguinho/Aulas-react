@@ -32,12 +32,14 @@ function App() {
 
     // Pick a random word
     const word = words[category][Math.floor(Math.random() * words[category].length)]; // Pegando uma palavra aleatória com base nas palavras da categoria selecionada
-    console.log(word);
+
+    return {word, category};
   }
 
   const startGame = () => { // Start the game
     // pick word and category
-    pickWordAndCategory();
+    const { word, category } = pickWordAndCategory();
+
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
   }
 
@@ -53,7 +55,7 @@ function App() {
     <div className="App">
       {gameStage === 'start' && <StartScreen startGame={startGame} />}
       {gameStage === 'mid' && <MidScreen verifyLetter={verifyLetter} />}
-      {gameStage === 'end' && <EndScreen restartGame={restartGame}/>}
+      {gameStage === 'end' && <EndScreen restartGame={restartGame} />}
     </div>
   );
 }
