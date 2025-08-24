@@ -59,6 +59,7 @@ function App() {
 
   const verifyLetter = (letter) => { // Checks if the word contains the mentioned letters
     // setGameStage(stages[2].name);
+    console.log(letter)
     const normalizeLetter = letter.toLowerCase();
     if(guessedLetters.includes(normalizeLetter) || wrongLetters.includes(normalizeLetter)){
       return;

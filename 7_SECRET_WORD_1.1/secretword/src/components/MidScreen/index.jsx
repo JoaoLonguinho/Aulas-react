@@ -38,7 +38,7 @@ const MidScreen = ({verifyLetter, hint, selectedWord, letters, guessedLetters, w
         <p>Tente advinhar uma <span className="highlight">letra</span> da <span className="highlight">palavra</span></p>
         <form onSubmit={handleSubmit}>
           <input type="text" name='letter' maxLength="1" required onChange={(e) => setLetter(e.target.value)} value={letter} ref={letterInputRef}/>
-          <button onClick={verifyLetter} class="check-letter">Tentar</button>
+          <button className="check-letter">Tentar</button>
         </form>
       </div>
       <div className="wrong-letter-container">
