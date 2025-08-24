@@ -21,8 +21,8 @@ const stages = [
 function App() {
   const [gameStage, setGameStage] = useState(stages[0].name);  // hook puxando o primeiro estágio do jogo
   const [words] = useState(wordsList); // Busca as palavras no arquivo words
-  const [picketWord, setPickedWord] = useState("");
-  const [picketCategory, setPickedCategory] = useState("");
+  const [pickedWord, setPickedWord] = useState("");
+  const [pickedCategory, setPickedCategory] = useState("");
   const [letters, setLetters] = useState("");
 
   const pickWordAndCategory = () => {
@@ -40,6 +40,15 @@ function App() {
     // pick word and category
     const { word, category } = pickWordAndCategory();
 
+    // create an array of letters 
+    let wordLetters = word.split("");
+
+    wordLetters = wordLetters.map((l) => l.toLowerCase());
+
+    setPickedCategory(category);
+    setPickedWord(word);
+
+    console.log(pickedWord, pickedCategory);
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
   }
 
