@@ -57,8 +57,9 @@ function App() {
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
   }
 
-  const verifyLetter = () => { // Checks if the word contains the mentioned letters
-    setGameStage(stages[2].name);
+  const verifyLetter = (letter) => { // Checks if the word contains the mentioned letters
+    // setGameStage(stages[2].name);
+    console.log(letter)
   }
 
   const restartGame = () => { // Checks if the word contains the mentioned letters

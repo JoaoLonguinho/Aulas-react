@@ -1,6 +1,17 @@
+import { useState } from 'react'
 import './MidScreen.css'
 
 const MidScreen = ({verifyLetter, hint, selectedWord, letters, guessedLetters, wrongLetters, guesses, score}) => {
+  
+  const [letter, setLetter] = useState('');
+  
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+
+    verifyLetter(letter);
+    setLetter("");
+  }
+
   return (
     <div className='in-game-container'>
       <div className="game">
@@ -23,8 +34,8 @@ const MidScreen = ({verifyLetter, hint, selectedWord, letters, guessedLetters, w
       </div>
       <div className="letter-container">
         <p>Tente advinhar uma <span className="highlight">letra</span> da <span className="highlight">palavra</span></p>
-        <form>
-          <input type="text" name='letter' maxLength="1" required />
+        <form onSubmit={handleSubmit}>
+          <input type="text" name='letter' maxLength="1" required onChange={(e) => setLetter(e.target.value)} value={letter}/>
           <button onClick={verifyLetter}>Tentar</button>
         </form>
       </div>
@@ -32,6 +43,9 @@ const MidScreen = ({verifyLetter, hint, selectedWord, letters, guessedLetters, w
         <p>Letras já utilizadas:</p>
         <div>
           <span>{guessedLetters}</span>
+          {wrongLetters.map((letter, i) => (
+            <span key={i}>{letter} - </span>
+          ))}
         </div>
       </div>
     </div>
