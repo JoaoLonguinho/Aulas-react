@@ -22,6 +22,7 @@
 }
 .wordContainer{
     display: flex;
+    gap: 10px
 }
 .letter,
 .black-square{
