@@ -64,7 +64,7 @@ function App() {
   return (
     <div className="App">
       {gameStage === 'start' && <StartScreen startGame={startGame} />}
-      {gameStage === 'mid' && <MidScreen verifyLetter={verifyLetter} />}
+      {gameStage === 'mid' && <MidScreen verifyLetter={verifyLetter} hint={pickedCategory} selectedWord={pickedWord} />}
       {gameStage === 'end' && <EndScreen restartGame={restartGame} />}
     </div>
   );

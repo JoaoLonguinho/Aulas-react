@@ -1,0 +1,37 @@
+.highlight{
+    color: #f75C03;
+}
+.letter-container input{
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: 900;
+    border: 1px solid #820263;
+    color: #820263;
+}
+.letter-container form{
+    display: flex;
+    gap: 5px;
+}
+.wrong-letter-container div{
+    font-size: 32px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+.wordContainer{
+    display: flex;
+}
+.letter,
+.black-square{
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: 900;
+    border: 1px solid #820263;
+    color: #820263;
+    background: white;
+}
