@@ -26,16 +26,18 @@ function App() {
   const [letters, setLetters] = useState("");
 
   const pickWordAndCategory = () => {
+    // Pick a random category
     const categories = Object.keys(words); // chaves do array de objetos
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]; // Pegando uma categoria aleatórios pelas chaves do array e pegando o tamanho com base no tamanho do array
 
-    console.log(category);
+    // Pick a random word
+    const word = words[category][Math.floor(Math.random() * words[category].length)]; // Pegando uma palavra aleatória com base nas palavras da categoria selecionada
+    console.log(word);
   }
 
   const startGame = () => { // Start the game
     // pick word and category
-  pickWordAndCategory();
-
+    pickWordAndCategory();
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
   }
 
