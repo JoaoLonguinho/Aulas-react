@@ -27,7 +27,7 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [guesses, setGuesses] = useState(3); //Número de tentativas.
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(50);
 
   const pickWordAndCategory = () => {
     // Pick a random category
@@ -52,7 +52,6 @@ function App() {
     setPickedCategory(category);
     setPickedWord(word);
     setLetters(wordLetters);
-
     console.log(pickedWord, pickedCategory, letters);
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
   }
@@ -60,17 +59,47 @@ function App() {
   const verifyLetter = (letter) => { // Checks if the word contains the mentioned letters
     // setGameStage(stages[2].name);
     console.log(letter)
+    console.log()
     const normalizeLetter = letter.toLowerCase();
-    if(guessedLetters.includes(normalizeLetter) || wrongLetters.includes(normalizeLetter)){
+    if (guessedLetters.includes(normalizeLetter) || wrongLetters.includes(normalizeLetter)) {
       return;
-    } 
+    }
+    if (letters.includes(normalizeLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizeLetter
+      ])
+    }
+    else {
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        normalizeLetter
+      ])
+      setGuesses((actualGuesses) => actualGuesses - 1)
+      // if (guesses <= 1) {
 
+      // }
+    }
     // checa se a letra já foi utilizada
-
   }
 
+  const clearLetterStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  }
+
+  useEffect(() => {
+    if (guesses <= 0) {
+
+      setGameStage(stages[2].name);
+    }
+  }, [guesses])
+
   const restartGame = () => { // Checks if the word contains the mentioned letters
+    setScore(0);
+    setGuesses(3);
     setGameStage(stages[0].name);
+    clearLetterStates();
   }
 
   return (
@@ -87,7 +116,11 @@ function App() {
           guesses={guesses}
           score={score}
         />}
-      {gameStage === 'end' && <EndScreen restartGame={restartGame} />}
+      {gameStage === 'end' && <EndScreen
+        restartGame={restartGame}
+        score={score}
+
+      />}
     </div>
   );
 }
