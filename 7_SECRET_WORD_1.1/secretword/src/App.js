@@ -27,9 +27,9 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [guesses, setGuesses] = useState(3); //Número de tentativas.
-  const [score, setScore] = useState(50);
+  const [score, setScore] = useState(0); // Pontuação
 
-  const pickWordAndCategory = () => {
+  const pickWordAndCategory = useCallback(() => {
     // Pick a random category
     const categories = Object.keys(words); // chaves do array de objetos
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]; // Pegando uma categoria aleatórios pelas chaves do array e pegando o tamanho com base no tamanho do array
@@ -38,9 +38,10 @@ function App() {
     const word = words[category][Math.floor(Math.random() * words[category].length)]; // Pegando uma palavra aleatória com base nas palavras da categoria selecionada
 
     return { word, category };
-  }
+  }, [words])
 
-  const startGame = () => { // Start the game
+  const startGame = useCallback (() => { // Start the game
+    clearLetterStates();
     // pick word and category
     const { word, category } = pickWordAndCategory();
 
@@ -52,14 +53,14 @@ function App() {
     setPickedCategory(category);
     setPickedWord(word);
     setLetters(wordLetters);
-    console.log(pickedWord, pickedCategory, letters);
+   
     setGameStage(stages[1].name); // stages -> o array de objetos, 1 -> posição, name -> o dado dentro do objeto do array que está sendo alterado
-  }
+  }, [pickWordAndCategory])
 
   const verifyLetter = (letter) => { // Checks if the word contains the mentioned letters
     // setGameStage(stages[2].name);
-    console.log(letter)
-    console.log()
+
+
     const normalizeLetter = letter.toLowerCase();
     if (guessedLetters.includes(normalizeLetter) || wrongLetters.includes(normalizeLetter)) {
       return;
@@ -76,11 +77,7 @@ function App() {
         normalizeLetter
       ])
       setGuesses((actualGuesses) => actualGuesses - 1)
-      // if (guesses <= 1) {
-
-      // }
     }
-    // checa se a letra já foi utilizada
   }
 
   const clearLetterStates = () => {
@@ -88,12 +85,27 @@ function App() {
     setWrongLetters([]);
   }
 
+
+  //checa se as tentativas acabaram  
   useEffect(() => {
     if (guesses <= 0) {
 
       setGameStage(stages[2].name);
     }
   }, [guesses])
+
+  useEffect(() => {
+    const uniqueLetters = [...new Set(letters)] // transforma cada letra repetida em unica ??
+
+    //Condição de vitória
+    if(guessedLetters.length === uniqueLetters.length){
+      setScore((actualScore) => actualScore += 100);
+      startGame();
+      setGuessedLetters([])
+
+    }
+  
+  }, [guessedLetters, letters, startGame])
 
   const restartGame = () => { // Checks if the word contains the mentioned letters
     setScore(0);
