@@ -9,7 +9,7 @@ function App() {
 
   // 1 - resgatando dados
 
-  const url = "https://localhost:3000/products"
+  const url = "http://localhost:3000/products"
 
   useEffect(() => {
     async function fetchData() {
@@ -25,6 +25,11 @@ function App() {
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>Produto: {product.name} Preço: R$ {product.price}</li>
+        ))}
+      </ul>
     </div>
   );
 }
