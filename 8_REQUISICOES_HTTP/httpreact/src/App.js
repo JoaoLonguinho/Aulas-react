@@ -9,15 +9,15 @@ function App() {
 
   // 1 - resgatando dados
 
-  const url = "http://localhost:3000/products"
+  const url = "https://localhost:3000/products"
 
   useEffect(() => {
-    const fetchData = async () => { // Necessário criar uma função e chamar ela mesma dentro do useEffect
-      const res = await fetch(url)
-      const data = await res.json()
+    async function fetchData() {
+      const res = await fetch(url);
+      const data = await res.json();
       setProducts(data);
     }
-    fetchData();
+    fetchData()
   }, [])
 
   console.log(products)
