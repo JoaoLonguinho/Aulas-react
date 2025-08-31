@@ -15,7 +15,7 @@ function App() {
   const [price, setPrice] = useState("");
 
   // 4 - custom hook 
-  const { data: items } = useFetch(url);
+  const { data: items, httpConfig } = useFetch(url);
   console.log(items)
 
   // useEffect(() => {
@@ -38,32 +38,33 @@ function App() {
       price
     }
 
-    const res = await fetch(url, {
-      method: "POST",
-      header: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(product)
-    });
+    // const res = await fetch(url, {
+    //   method: "POST",
+    //   header: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(product)
+    // });
 
-    // Carregamento dinâmico
+    // // Carregamento dinâmico
 
-    const addedProducts = await res.json();
-    setProducts((prevProducts) => [...prevProducts, addedProducts])
+    // const addedProducts = await res.json();
+    // setProducts((prevProducts) => [...prevProducts, addedProducts])
+
+    // 5 - refatorando POST
+    httpConfig(product, "POST")
 
     setName("");
     setPrice("");
 
   }
 
-
-
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
       <ul>
         {items && items.map((product) => (
-          <li key={product.id}>Produto: {product.name} Preço: R$ {product.price}</li>
+          <li key={product.id}> {product.name} - R$ {product.price}</li>
         ))}
       </ul>
       <hr />
