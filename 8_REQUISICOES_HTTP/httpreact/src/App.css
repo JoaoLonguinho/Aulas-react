@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.create-product-form{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: auto;
+  gap: 10px;
+}
+.create-product-form input[type=text]{
+  margin: 10px;
+}
+.create-product-form input[type=submit]{
+  margin: auto;
+}
