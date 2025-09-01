@@ -44,6 +44,21 @@
       "id": "b148",
       "name": "Celular",
       "price": "1.100"
+    },
+    {
+      "id": "70fc",
+      "name": "Capa celular",
+      "price": "10"
+    },
+    {
+      "id": "fbc1",
+      "name": "carregador",
+      "price": "150"
+    },
+    {
+      "id": "414b",
+      "name": "Dark Souls III",
+      "price": "130"
     }
   ]
 }

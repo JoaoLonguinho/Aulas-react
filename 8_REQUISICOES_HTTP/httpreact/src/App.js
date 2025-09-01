@@ -15,7 +15,7 @@ function App() {
   const [price, setPrice] = useState("");
 
   // 4 - custom hook 
-  const { data: items, httpConfig } = useFetch(url);
+  const { data: items, httpConfig, loading } = useFetch(url);
   console.log(items)
 
   // useEffect(() => {
@@ -62,11 +62,14 @@ function App() {
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
-      <ul>
-        {items && items.map((product) => (
-          <li key={product.id}> {product.name} - R$ {product.price}</li>
-        ))}
-      </ul>
+      {loading && <p>Carregando dados...</p>}
+      {!loading &&
+        <ul>
+          {items && items.map((product) => (
+            <li key={product.id}> {product.name} - R$ {product.price}</li>
+          ))}
+        </ul>}
+
       <hr />
       <div className="add-produc">
         <form onSubmit={handleSubmit} className='create-product-form'>
@@ -78,7 +81,9 @@ function App() {
             Preço:
             <input type="text" name="value" value={price} onChange={(e) => setPrice(e.target.value)} />
           </label>
-          <input type="submit" value="Criar" />
+          {/* 7- State loading post */}
+          {loading && <input type="submit" disabled value="Aguarde" />}
+          {!loading && <input type="submit" value="Criar" />} 
         </form>
       </div>
     </div>
