@@ -1,7 +1,7 @@
 import './App.css';
 
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 
 // custom hook
 import { useFetch } from './hooks/useFetch';
@@ -13,10 +13,11 @@ function App() {
   const url = "http://localhost:3000/products"
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [productToDel, setProductToDel] = useState("");
 
   // 4 - custom hook 
-  const { data: items, httpConfig, loading } = useFetch(url);
-  console.log(items)
+  const { data: items, httpConfig, loading, error } = useFetch(url);
+  // console.log(items)
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -59,14 +60,21 @@ function App() {
 
   }
 
+  // 8
+
+  const handleRemove = (id) => {
+    httpConfig(id, "DELETE");
+  }
+
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
       {loading && <p>Carregando dados...</p>}
-      {!loading &&
+      {error && <p>{error}</p>}
+      {!error &&
         <ul>
           {items && items.map((product) => (
-            <li key={product.id}> {product.name} - R$ {product.price}</li>
+            <li key={product.id}> {product.name} - R$ {product.price} <button onClick={() => handleRemove(product.id)}>Excluir</button> </li> 
           ))}
         </ul>}
 

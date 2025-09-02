@@ -1,11 +1,6 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "Camisa",
-      "price": 59.9
-    },
-    {
       "id": "2",
       "name": "Calça vermelha",
       "price": 90
@@ -24,11 +19,6 @@
       "id": "953a",
       "name": "Lantejoula",
       "price": "9,80"
-    },
-    {
-      "id": "3bb8",
-      "name": "Blusa",
-      "price": "200"
     },
     {
       "id": "293b",
@@ -54,11 +44,6 @@
       "id": "fbc1",
       "name": "carregador",
       "price": "150"
-    },
-    {
-      "id": "414b",
-      "name": "Dark Souls III",
-      "price": "130"
     }
   ]
 }
