@@ -91,7 +91,7 @@ export const useFetch = (url) => {
             setCallFetch(json)
         }
         httpRequest();
-    }, [config, method, url])
+    }, [config, method, url, itemId])
 
-    return { data, httpConfig, loading, error, itemId };
+    return { data, httpConfig, loading, error };
 }

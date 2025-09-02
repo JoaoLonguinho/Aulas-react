@@ -1,19 +1,17 @@
 import './App.css';
 
 
-import { useState, useEffect, use } from 'react';
+import { useState } from 'react';
 
 // custom hook
 import { useFetch } from './hooks/useFetch';
 
 function App() {
 
-  const [products, setProducts] = useState([])
   // 1 - resgatando dados
   const url = "http://localhost:3000/products"
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [productToDel, setProductToDel] = useState("");
 
   // 4 - custom hook 
   const { data: items, httpConfig, loading, error } = useFetch(url);
@@ -74,9 +72,10 @@ function App() {
       {!error &&
         <ul>
           {items && items.map((product) => (
-            <li key={product.id}> {product.name} - R$ {product.price} <button onClick={() => handleRemove(product.id)}>Excluir</button> </li> 
+            <li key={product.id}> {product.name} - R$ {product.price} <button onClick={() => handleRemove(product.id)}>Excluir</button> </li>
           ))}
-        </ul>}
+        </ul>
+      }
 
       <hr />
       <div className="add-produc">
@@ -91,7 +90,7 @@ function App() {
           </label>
           {/* 7- State loading post */}
           {loading && <input type="submit" disabled value="Aguarde" />}
-          {!loading && <input type="submit" value="Criar" />} 
+          {!loading && <input type="submit" value="Criar" />}
         </form>
       </div>
     </div>
