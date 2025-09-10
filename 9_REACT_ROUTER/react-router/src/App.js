@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Navbar from './components/Navbar';
 import Products from './pages/Products';
 import Info from './pages/Info';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
           <Route path="/products/:id" element={<Products />} />
           {/* 6- Nested Routes */}
           <Route path="/products/:id/info" element={<Info />} />
+          {/* 7- no match route */}
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
