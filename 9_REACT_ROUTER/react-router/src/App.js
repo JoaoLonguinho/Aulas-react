@@ -12,6 +12,8 @@ import Navbar from './components/Navbar';
 import Products from './pages/Products';
 import Info from './pages/Info';
 import NotFound from './pages/NotFound';
+import SearchForm from './components/SearchForm';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <BrowserRouter>
         {/* 2- Links com react router */}
         <Navbar /> {/* É obrigatório colocar dentro do BrowserRouter */}
+        {/* 9- Search */}
+        <SearchForm />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/about' element={<About />} />
@@ -27,8 +31,11 @@ function App() {
           <Route path="/products/:id" element={<Products />} />
           {/* 6- Nested Routes */}
           <Route path="/products/:id/info" element={<Info />} />
+          {/* 9- Search */}
+          <Route path="/search" element={<Search/>} />
           {/* 7- no match route */}
           <Route path='*' element={<NotFound />} />
+          
         </Routes>
       </BrowserRouter>
     </div>
