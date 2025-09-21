@@ -1,8 +1,7 @@
 // 1- criar contexto 
 import { createContext, useState } from "react";
 
-const CounterContext = createContext(); // Necessário criar e atribuir antes de exportar.
-export default CounterContext;
+export const CounterContext = createContext(); // Necessário criar e atribuir antes de exportar.
 
 // 2- provider 
 export const CounterContextProvider = ({children}) => {
